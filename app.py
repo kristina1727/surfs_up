@@ -1,6 +1,5 @@
 # Import dependencies
 import datetime as dt
-from re import M
 import numpy as np
 import pandas as pd
 import sqlalchemy
