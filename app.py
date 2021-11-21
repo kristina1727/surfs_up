@@ -10,7 +10,7 @@ from flask import Flask, jsonify
 from sqlalchemy.sql.traversals import TraversalComparatorStrategy
 
 # Set up the database
-engine = create_engine("sqlite:///hawaii.sqlite")
+engine = create_engine("sqlite:///hawaii.sqlite",connect_args={'check_same_thread': False})
 
 # Reflect the database into our classes
 Base = automap_base()
@@ -97,3 +97,9 @@ def stats(start=None, end=None):
         filter(Measurement.date <= end).all()
     temps = list(np.ravel(results))
     return jsonify(temps)
+
+if __name__ =="__main__":
+    app.run(debug = True)
+    print("example is being run directly.")
+else:
+    print("example is being imported")
